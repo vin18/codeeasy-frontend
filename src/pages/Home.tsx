@@ -7,7 +7,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import courses from '../courses.json';
+import { useQuery } from '@tanstack/react-query';
 
 interface Course {
   _id: string;
@@ -24,6 +24,19 @@ interface Course {
 }
 
 const Home = () => {
+  const {
+    isLoading,
+    error,
+    data: courses,
+  } = useQuery({
+    queryKey: ['courses'],
+    queryFn: () =>
+      fetch('http://localhost:5000/api/v1/courses').then((res) => res.json()),
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error...</p>;
+
   return (
     <div>
       <SimpleGrid margin="50px 0" minChildWidth="300px" spacing="40px">
