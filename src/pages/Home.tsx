@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import courses from '../courses.json';
 
-interface ICourse {
+interface Course {
   _id: string;
   name: string;
   heading: string;
@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <div>
       <SimpleGrid margin="50px 0" minChildWidth="300px" spacing="40px">
-        {courses?.map((c: ICourse) => (
+        {courses?.map((c: Course) => (
           <Card
             _hover={{
               transform: 'scale(1.02)',
@@ -38,14 +38,14 @@ const Home = () => {
             key={c._id}
             role="group"
           >
+            <Image
+              src={c.image}
+              alt={c.name}
+              borderTopRadius="lg"
+              width="400px"
+              height="210px"
+            />
             <CardBody>
-              <Image
-                src={c.image}
-                alt={c.name}
-                borderRadius="lg"
-                width="400px"
-                height="190px"
-              />
               <Stack mt="6" spacing="3">
                 <Heading _groupHover={{ color: '#8244FF' }} size="md">
                   {c.name}
