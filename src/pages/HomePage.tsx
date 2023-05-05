@@ -3,6 +3,7 @@ import {
   CardBody,
   Heading,
   Image,
+  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -23,7 +24,7 @@ interface Course {
   duration: number;
 }
 
-const Home = () => {
+const HomePage = () => {
   const {
     isLoading,
     error,
@@ -41,6 +42,7 @@ const Home = () => {
     <div>
       <SimpleGrid margin="50px 0" minChildWidth="300px" spacing="40px">
         {courses?.map((c: Course) => (
+          // <Link to={`/courses/${c._id}`}>
           <Card
             _hover={{
               transform: 'scale(1.02)',
@@ -67,10 +69,11 @@ const Home = () => {
               </Stack>
             </CardBody>
           </Card>
+          // </Link>
         ))}
       </SimpleGrid>
     </div>
   );
 };
 
-export default Home;
+export default HomePage;
