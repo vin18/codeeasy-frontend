@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   Heading,
-  Image,
   List,
   ListItem,
   Text,
@@ -30,7 +29,7 @@ const CourseDetailPage = () => {
     error,
     data: course,
   } = useQuery({
-    queryKey: ['courses'],
+    queryKey: ['coursess'],
     queryFn: () =>
       fetch(`http://localhost:5000/api/v1/courses/${courseId}`).then((res) =>
         res.json()
