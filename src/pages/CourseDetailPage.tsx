@@ -29,7 +29,7 @@ const CourseDetailPage = () => {
     error,
     data: course,
   } = useQuery({
-    queryKey: ['coursess'],
+    queryKey: ['courses', courseId],
     queryFn: () =>
       fetch(`http://localhost:5000/api/v1/courses/${courseId}`).then((res) =>
         res.json()
@@ -55,7 +55,7 @@ const CourseDetailPage = () => {
 
       <Flex marginTop="100px">
         <Box width="50%">
-          <Heading as="h3" size="lg" marginBottom="15px" noOfLines={1}>
+          <Heading as="h3" size="md" marginBottom="15px" noOfLines={1}>
             {name}
           </Heading>
 
